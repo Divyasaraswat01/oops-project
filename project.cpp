@@ -28,7 +28,7 @@ public:
         cout << "\nCourse: " << course;
     }
 
-    ~Student() {}
+    Student() {}
 };
 
 // Derived Class - Single Inheritance
@@ -97,7 +97,7 @@ public:
         return percentage(*this) > percentage(r2);
     }
 
-    // File Handling with Exception Handling
+    // File Handling with Exception Handling//
     void saveToFile() {
         ofstream fout("Result.txt", ios::app);
         if (!fout)
@@ -110,7 +110,7 @@ public:
         fout.close();
     }
 
-    ~Result() {}
+    Result() {}
 };
 int Result::count = 0;
 
@@ -161,4 +161,5 @@ int main() {
     }
 
     return 0;
+
 }
