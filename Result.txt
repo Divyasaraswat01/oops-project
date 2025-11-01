@@ -1,0 +1,10 @@
+Roll No: 23	Name: divya	Course: csai	Total: 330	Percentage: 66	Grade: C
+Roll No: 0	Name: H‹	Course: 	Total: 1	Percentage: 0.2	Grade: F
+Roll No: 0	Name: ˜ğÄÅÆÇ	Course: ÚÛÜİŞßàáâãäåæçèéêëìíîïğñòóôõö÷øùúûüışÿ	Total: 100268030	Percentage: 2.00536e+007	Grade: A
+Roll No: 0	Name: ˜	Course: 	Total: 0	Percentage: 0	Grade: F
+Roll No: 105	Name: divya	Course: csai	Total: 461	Percentage: 92.2	Grade: A
+Roll No: 106	Name: mamta	Course: csai	Total: 453	Percentage: 90.6	Grade: A
+Roll No: 0	Name: ˜ü	Course: ÚÛÜİŞßàáâãäåæçèéêëìíîïğñòóôõö÷øùúûüışÿ	Total: 100268030	Percentage: 2.00536e+007	Grade: A
+Roll No: 0	Name: ˜ü	Course: 	Total: 0	Percentage: 0	Grade: F
+Roll No: 101	Name: divya	Course: 90	Total: 433	Percentage: 86.6	Grade: A
+Roll No: 0	Name: ˜!	Course: 	Total: 0	Percentage: 0	Grade: F
