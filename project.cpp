@@ -12,7 +12,11 @@ public:
     Student() {
         roll = 0;
     }
-
+virtual void showDetails()const{
+    cout<<"\nRoll No: "<<roll no;
+    cout<<"\nName: "<<name;
+    cout<<"\nCourse: "<<course;
+}
     void inputStudent() {
         cout << "\nEnter Roll No: ";
         cin >> roll;
@@ -31,7 +35,7 @@ public:
     Student() {}
 };
 
-
+//derived class
 class Marks : public Student {
 protected:
     int oop, dsa, de, maths, se;
@@ -86,6 +90,13 @@ public:
         cout << "\nPercentage: " << percentage(*this);
         cout << "\nGrade: " << grade << endl;
     }
+void showDetails()const{
+    marks::ShowDetails();
+    Student::ShowDetails();
+    ShowMarks(totalMarks());
+    cout<<"\nPercentage: "<<percentage<<endl;
+    cout<<"\nGrade: "<<grade<<endl;
+}
 
     // Static Function
     static void totalStudents() {
@@ -126,6 +137,12 @@ int main() {
         Result *r1 = new Result;
         Result *r2 = new Result;
 
+        cout<< "\n\n===RESULT DETAILS===";
+        r1->ShowDetails();
+        Result::ShowDetails()
+        r2->ShowDetails();
+        Result::ShowDetails()
+
         cout << "\n--- Enter Student 1 Details ---";
         r1->inputStudent();
         r1->inputMarks();
@@ -163,4 +180,5 @@ int main() {
     return 0;
 
 }
+
 
