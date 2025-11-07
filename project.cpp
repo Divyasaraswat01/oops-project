@@ -12,11 +12,7 @@ public:
     Student() {
         roll = 0;
     }
-virtual void showDetails()const{
-    cout<<"\nRoll No: "<<roll no;
-    cout<<"\nName: "<<name;
-    cout<<"\nCourse: "<<course;
-}
+
     void inputStudent() {
         cout << "\nEnter Roll No: ";
         cin >> roll;
@@ -26,7 +22,7 @@ virtual void showDetails()const{
         cin >> course;
     }
 
-    void showStudent()const {
+    void showStudent() {
         cout << "\nRoll No: " << roll;
         cout << "\nName: " << name;
         cout << "\nCourse: " << course;
@@ -45,12 +41,12 @@ public:
         cin >> oop >> dsa >> de >> maths >> se;
     }
 
-    int totalMarks()const {
+    int totalMarks(){
         return oop + dsa + de + maths + se;
     }
 
     
-    void showMarks(int total)const {
+    void showMarks() {
         cout << "\nOOP: " << oop << "  DSA: " << dsa << "  DE: " << de
              << "  Maths: " << maths << "  SE: " << se;
     }
@@ -60,10 +56,10 @@ public:
     }
 
     
-    friend float percentage(const Marks m);
+    friend float percentage(Marks m);
 };
 
-float percentage(const Marks m) {
+float percentage(Marks m) {
     return (m.totalMarks() / 500.0f) * 100;
 }
 
@@ -83,20 +79,13 @@ public:
         else grade = 'F';
     }
 
-    void showResult() const{
+    void showResult() {
         showStudent();
         showMarks();
         showMarks(totalMarks());
         cout << "\nPercentage: " << percentage(*this);
         cout << "\nGrade: " << grade << endl;
     }
-void showDetails()const{
-    marks::ShowDetails();
-    Student::ShowDetails();
-    ShowMarks(totalMarks());
-    cout<<"\nPercentage: "<<percentage<<endl;
-    cout<<"\nGrade: "<<grade<<endl;
-}
 
     // Static Function
     static void totalStudents() {
@@ -137,12 +126,6 @@ int main() {
         Result *r1 = new Result;
         Result *r2 = new Result;
 
-        cout<< "\n\n===RESULT DETAILS===";
-        r1->ShowDetails();
-        Result::ShowDetails()
-        r2->ShowDetails();
-        Result::ShowDetails()
-
         cout << "\n--- Enter Student 1 Details ---";
         r1->inputStudent();
         r1->inputMarks();
@@ -180,5 +163,6 @@ int main() {
     return 0;
 
 }
+
 
 
