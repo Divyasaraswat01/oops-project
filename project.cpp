@@ -2,7 +2,7 @@
 #include <fstream>
 using namespace std;
 
-// Base Class
+//base class//
 class Student {
 public:
     int roll;
@@ -22,7 +22,7 @@ public:
         cin >> course;
     }
 
-    void showStudent() {
+    void showStudent()const {
         cout << "\nRoll No: " << roll;
         cout << "\nName: " << name;
         cout << "\nCourse: " << course;
@@ -31,7 +31,7 @@ public:
     Student() {}
 };
 
-// Derived Class - Single Inheritance
+
 class Marks : public Student {
 protected:
     int oop, dsa, de, maths, se;
@@ -41,12 +41,12 @@ public:
         cin >> oop >> dsa >> de >> maths >> se;
     }
 
-    int totalMarks() {
+    int totalMarks()const {
         return oop + dsa + de + maths + se;
     }
 
-    // Function overloading
-    void showMarks() {
+    
+    void showMarks(int total)const {
         cout << "\nOOP: " << oop << "  DSA: " << dsa << "  DE: " << de
              << "  Maths: " << maths << "  SE: " << se;
     }
@@ -55,15 +55,15 @@ public:
         cout << "\nTotal Marks: " << total;
     }
 
-    // Friend Function
-    friend float percentage(Marks m);
+    
+    friend float percentage(const Marks m);
 };
 
-float percentage(Marks m) {
+float percentage(const Marks m) {
     return (m.totalMarks() / 500.0f) * 100;
 }
 
-// Derived Class - Multilevel Inheritance
+
 class Result : public Marks {
     char grade;
     static int count;
@@ -79,7 +79,7 @@ public:
         else grade = 'F';
     }
 
-    void showResult() {
+    void showResult() const{
         showStudent();
         showMarks();
         showMarks(totalMarks());
@@ -163,3 +163,4 @@ int main() {
     return 0;
 
 }
+
