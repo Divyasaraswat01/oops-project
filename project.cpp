@@ -2,14 +2,14 @@
 #include <fstream>
 using namespace std;
 
-//base class//
 class Student {
 public:
     int roll;
     char name[30];
     char course[30];
+    const int collegeCode;
 public:
-    Student() {
+    Student() : collegeCode(1023) {
         roll = 0;
     }
 
@@ -22,16 +22,20 @@ public:
         cin >> course;
     }
 
-    void showStudent() {
+    void showStudent() const {
         cout << "\nRoll No: " << roll;
         cout << "\nName: " << name;
         cout << "\nCourse: " << course;
+        cout << "\nCollege Code: " << collegeCode;
+    }
+
+    virtual void displayMessage() const {
+        cout << "\nThis is Student class displayMessage().";
     }
 
     Student() {}
 };
 
-//derived class
 class Marks : public Student {
 protected:
     int oop, dsa, de, maths, se;
@@ -41,28 +45,25 @@ public:
         cin >> oop >> dsa >> de >> maths >> se;
     }
 
-    int totalMarks(){
+    int totalMarks() const {
         return oop + dsa + de + maths + se;
     }
 
-    
-    void showMarks() {
+    void showMarks() const {
         cout << "\nOOP: " << oop << "  DSA: " << dsa << "  DE: " << de
              << "  Maths: " << maths << "  SE: " << se;
     }
 
-    void showMarks(int total) {
+    void showMarks(int total) const {
         cout << "\nTotal Marks: " << total;
     }
 
-    
     friend float percentage(Marks m);
 };
 
 float percentage(Marks m) {
     return (m.totalMarks() / 500.0f) * 100;
 }
-
 
 class Result : public Marks {
     char grade;
@@ -79,7 +80,11 @@ public:
         else grade = 'F';
     }
 
-    void showResult() {
+    void displayMessage() const override {
+        
+    }
+
+    void showResult() const {
         showStudent();
         showMarks();
         showMarks(totalMarks());
@@ -87,18 +92,15 @@ public:
         cout << "\nGrade: " << grade << endl;
     }
 
-    // Static Function
     static void totalStudents() {
         cout << "\nTotal Results Generated: " << count;
     }
 
-    // Operator Overloading
-    bool operator>(Result &r2) {
+    bool operator>(const Result &r2) const {
         return percentage(*this) > percentage(r2);
     }
 
-    // File Handling with Exception Handling//
-    void saveToFile() {
+    void saveToFile() const {
         ofstream fout("Result.txt", ios::app);
         if (!fout)
             throw runtime_error("File could not be opened!");
@@ -114,7 +116,6 @@ public:
 };
 int Result::count = 0;
 
-// Template Function
 template <class T>
 void showInfo(T msg) {
     cout << "\n[Info]: " << msg;
@@ -122,7 +123,6 @@ void showInfo(T msg) {
 
 int main() {
     try {
-        // Dynamic Memory Allocation
         Result *r1 = new Result;
         Result *r2 = new Result;
 
@@ -140,7 +140,9 @@ int main() {
         r1->showResult();
         r2->showResult();
 
-        // Operator Overloading
+        Student *ptr = r1;
+        ptr->displayMessage();
+
         if (*r1 > *r2)
             cout << "\n" << r1->name << " scored higher.";
         else
@@ -154,15 +156,11 @@ int main() {
         showInfo("Results saved successfully!");
 
         delete r1;
-        delete r2; // Dynamic memory deallocation
+        delete r2;
     }
     catch (exception &e) {
         cout << "\nException: " << e.what();
     }
 
     return 0;
-
 }
-
-
-
