@@ -8,7 +8,7 @@ public:
     char name[30];
     char course[30];
     const int collegeCode;
-public:
+
     Student() : collegeCode(1023) {
         roll = 0;
     }
@@ -32,13 +32,12 @@ public:
     virtual void displayMessage() const {
         cout << "\nThis is Student class displayMessage().";
     }
-
-    Student() {}
 };
 
 class Marks : public Student {
 protected:
     int oop, dsa, de, maths, se;
+
 public:
     void inputMarks() {
         cout << "Enter marks in OOP, DSA, DE, Maths, SE: ";
@@ -68,6 +67,7 @@ float percentage(Marks m) {
 class Result : public Marks {
     char grade;
     static int count;
+
 public:
     Result() { count++; }
 
@@ -81,7 +81,7 @@ public:
     }
 
     void displayMessage() const override {
-        
+        cout << "\nThis is Result class displayMessage().";
     }
 
     void showResult() const {
@@ -104,16 +104,15 @@ public:
         ofstream fout("Result.txt", ios::app);
         if (!fout)
             throw runtime_error("File could not be opened!");
+
         fout << "Roll No: " << roll << "\tName: " << name
              << "\tCourse: " << course
              << "\tTotal: " << totalMarks()
              << "\tPercentage: " << percentage(*this)
              << "\tGrade: " << grade << endl;
-        fout.close();
     }
-
-    Result() {}
 };
+
 int Result::count = 0;
 
 template <class T>
